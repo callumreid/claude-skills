@@ -1,5 +1,5 @@
 ---
-allowed-tools: [Read, Edit, Write, Glob, Grep, mcp__strava-activity__fetch_strava_activity]
+allowed-tools: [Read, Edit, Write, Glob, Grep, mcp__strava-activity__fetch_strava_activity, mcp__strava-activity__count_segment_crossings, mcp__strava-activity__get_activity_stats, mcp__strava-activity__get_activity_details]
 description: Sync Strava activities to daily notes
 argument-hint: [today | yesterday | this-week | YYYY-MM-DD | YYYY-MM-DD:YYYY-MM-DD]
 ---
@@ -98,3 +98,39 @@ After syncing, report:
 - Notes updated (with activity counts)
 - Notes skipped (not found)
 - Any errors encountered
+
+## Advanced Queries
+
+The MCP server also supports these additional tools:
+
+### Count Segment Crossings
+Query how many times you crossed a specific Strava segment:
+```
+mcp__strava-activity__count_segment_crossings
+- segment: "golden-gate-bridge-northbound" or "ggb-north" or segment ID
+- start_date: "2025-01-01"
+- end_date: "2025-12-31"
+```
+
+Known segments:
+- `golden-gate-bridge-northbound` (ID: 1149601)
+- `golden-gate-bridge-southbound` (ID: 1149605)
+- `hawk-hill` (ID: 229781)
+- `paradise-loop` (ID: 624371)
+
+### Get Activity Stats
+Get aggregated statistics for a date range:
+```
+mcp__strava-activity__get_activity_stats
+- start_date: "2025-01-01"
+- end_date: "2025-12-31"
+```
+
+Returns totals by activity type (rides, runs, swims, etc.)
+
+### Get Activity Details
+Get detailed info about a specific activity including all segment efforts:
+```
+mcp__strava-activity__get_activity_details
+- activity_id: 12345678
+```
