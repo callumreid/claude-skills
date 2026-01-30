@@ -15,6 +15,25 @@ Clean up and format Obsidian notes for maximum readability while preserving orig
 
 **Usage:** `/format-note [optional-file-path]`
 
+### strava-sync
+Fetch Strava activity data and sync it to daily notes in Obsidian.
+
+**What it does:**
+- Pulls activities from Strava API (rides, runs, swims, etc.)
+- Adds/updates `## Daily Activity Log` section in daily notes
+- Formats with distance, duration, pace/speed, elevation, heart rate
+
+**Usage:**
+```
+/strava-sync                        # Sync today
+/strava-sync yesterday              # Sync yesterday
+/strava-sync this-week              # Monday through today
+/strava-sync 2026-01-15             # Specific date
+/strava-sync 2026-01-01:2026-01-15  # Date range
+```
+
+**Requires:** Strava MCP server configured in `.mcp.json`
+
 ## Installation
 
 Copy skills to `~/.claude/skills/` and commands to `~/.claude/commands/`:
